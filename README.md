@@ -44,13 +44,29 @@ pip install -e .
 
 ### 配置
 
-在工作目录创建 `.env` 文件：
+**方式一：在工作目录创建 `.env` 文件**
 
 ```env
 LLM_BASE_URL=https://your-openai-compatible-endpoint/v1
 LLM_API_KEY=sk-...
 LLM_MODEL_ID=claude-sonnet-4-6
 ```
+
+**方式二：设置系统环境变量（全局生效）**
+
+```bash
+# Linux / macOS（写入 ~/.bashrc 或 ~/.zshrc）
+export LLM_BASE_URL=https://your-openai-compatible-endpoint/v1
+export LLM_API_KEY=sk-...
+export LLM_MODEL_ID=claude-sonnet-4-6
+
+# Windows PowerShell
+$env:LLM_API_KEY = "sk-..."
+$env:LLM_BASE_URL = "https://..."
+$env:LLM_MODEL_ID = "claude-sonnet-4-6"
+```
+
+> 两种方式可以共存：`.env` 文件优先级更高，适合按项目覆盖配置。
 
 ### 运行
 
