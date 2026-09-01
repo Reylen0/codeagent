@@ -114,8 +114,9 @@ class PermissionToolExecutor(ToolExecutor):
     def __init__(self, registry: ToolRegistry, workdir: str, todo_manager=None):
         super().__init__(registry)
         self.workdir = os.path.abspath(workdir)
-        self._todo_manager = todo_manager   # TodoManager 引用，用于判断列表是否非空
-        self._rounds_since_todo = 0         # 距上次调用 todo_write 的工具轮次
+        self._todo_manager = todo_manager
+        self._rounds_since_todo = 0
+        self._last_call_key: str | None = None   # 上一次工具调用的指纹
 
     def execute(self, tool_call: dict) -> dict:
         tool_call_id = tool_call.get("id", "")
@@ -126,6 +127,16 @@ class PermissionToolExecutor(ToolExecutor):
             args = json.loads(function.get("arguments", "{}"))
         except Exception:
             args = {}
+
+        # ── 闸门 0：重复调用检测 ────────────────────────────────────
+        call_key = f"{name}:{json.dumps(args, sort_keys=True)}"
+        if call_key == self._last_call_key:
+            return self._denied(
+                tool_call_id,
+                f"重复调用拦截：工具 '{name}' 以完全相同的参数被连续调用两次。"
+                " 请换一种方式或先确认上次调用的结果。",
+            )
+        self._last_call_key = call_key
 
         # ── 闸门 1：硬拒绝 ──────────────────────────────────────────
         if name == "bash":
