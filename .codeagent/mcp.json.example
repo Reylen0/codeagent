@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "tavily-mcp": {
+      "args": [
+        "-y",
+        "tavily-mcp@0.1.4"
+      ],
+      "autoApprove": [],
+      "command": "npx",
+      "disabled": false,
+      "env": {
+        "TAVILY_API_KEY": "your key",
+        "DEFAULT_PARAMETERS": "{\"search_depth\":\"advanced\",\"max_results\":10,\"include_answer\":true,\"time_range\":\"month\"}"
+      }
+    },
+    "amap-maps": {
+      "type": "sse",
+      "url": "your url"
+    }
+  }
+}

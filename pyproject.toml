@@ -1,0 +1,15 @@
+[project]
+name = "codeagent"
+version = "0.1.0"
+description = "灵活、可扩展的多智能体框架"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "python-dotenv>=1.0.0",
+    "openai>=1.0.0",
+    "pydantic>=2.0.0",
+    "numpy>=1.26.0",
+    "croniter>=2.0",
+    "mcp>=1.0",
+    "tzdata>=2024.1",
+]

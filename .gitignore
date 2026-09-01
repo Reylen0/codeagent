@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment variables (use .env.example as template)
+.env
+
+# Claude Code session files
+.claude/
+.code
+.traces/
+
+# Runtime state — user-specific, not for version control
+.codeagent/mcp.json
+.codeagent/memory/
+.codeagent/scheduled_tasks.json

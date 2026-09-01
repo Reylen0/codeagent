@@ -1,0 +1,22 @@
+{
+  "hooks": {
+    "on_tool_end": [
+      {
+        "match_tool": "file_write",
+        "command": "git add -A",
+        "description": "文件写入后自动暂存到 git"
+      },
+      {
+        "match_tool": "file_edit",
+        "command": "git add -A",
+        "description": "文件编辑后自动暂存到 git"
+      }
+    ],
+    "on_agent_end": [
+      {
+        "command": "echo %date% %time% >> .codeagent\\session.log",
+        "description": "每次会话结束记录时间戳（Windows）"
+      }
+    ]
+  }
+}
