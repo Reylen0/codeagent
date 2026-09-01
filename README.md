@@ -28,6 +28,14 @@
 
 ### 安装
 
+**方式一：直接从 GitHub 安装（推荐）**
+
+```bash
+pip install git+https://github.com/Reylen0/codeagent.git
+```
+
+**方式二：克隆后本地安装（便于修改）**
+
 ```bash
 git clone https://github.com/Reylen0/codeagent.git
 cd codeagent
@@ -36,7 +44,7 @@ pip install -e .
 
 ### 配置
 
-复制并编辑 `.env`：
+在工作目录创建 `.env` 文件：
 
 ```env
 LLM_BASE_URL=https://your-openai-compatible-endpoint/v1
@@ -47,10 +55,10 @@ LLM_MODEL_ID=claude-sonnet-4-6
 ### 运行
 
 ```bash
-python chat.py                        # 在当前目录启动
-python chat.py --workdir /your/repo   # 指定工作目录
-python chat.py --no-bash              # 禁用 Shell 执行
-python chat.py --max-iter 100         # 设置最大迭代轮数
+codeagent                          # 在当前目录启动
+codeagent --workdir /your/repo     # 指定工作目录
+codeagent --no-bash                # 禁用 Shell 执行
+codeagent --max-iter 100           # 设置最大迭代轮数
 ```
 
 ---
