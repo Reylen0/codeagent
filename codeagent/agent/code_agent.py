@@ -271,6 +271,7 @@ class CodeAgent(ToolAgent):
                     "tool_calls": response.tool_calls,
                 })
                 if response.is_tool_call():
+                    self.tool_executor.begin_batch()
                     for tool_call in response.tool_calls:
                         name = tool_call["function"]["name"]
                         self._emit("on_tool_start", name, tool_call)
@@ -384,6 +385,7 @@ class CodeAgent(ToolAgent):
                         "content": response.content,
                         "tool_calls": response.tool_calls,
                     })
+                    self.tool_executor.begin_batch()
                     for tool_call in response.tool_calls:
                         name = tool_call["function"]["name"]
                         self._emit("on_tool_start", name, tool_call)

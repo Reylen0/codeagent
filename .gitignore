@@ -20,4 +20,5 @@ wheels/
 # Runtime state — user-specific, not for version control
 .codeagent/mcp.json
 .codeagent/memory/
+.codeagent/transcripts/
 .codeagent/scheduled_tasks.json

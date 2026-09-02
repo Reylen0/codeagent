@@ -118,6 +118,9 @@ class PermissionToolExecutor(ToolExecutor):
         self._rounds_since_todo = 0
         self._last_call_key: str | None = None   # 上一次工具调用的指纹
 
+    def begin_batch(self):
+        self._last_call_key = None
+
     def execute(self, tool_call: dict) -> dict:
         tool_call_id = tool_call.get("id", "")
         function = tool_call.get("function", {})
